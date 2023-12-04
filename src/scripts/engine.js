@@ -40,10 +40,11 @@ function playSound (audioName) {
 }
 
 function randomSquare () {
+    // remove a classe "enemy" se ela estiver em algum dos quadradinhos
     state.view.squares.forEach((square) => {
         square.classList.remove("enemy");
     })
-
+    // seleciona um quadrado aleatório para a posição do inimigo
     let randomNumber = Math.floor(Math.random()*9);
     let randomSquare = state.view.squares[randomNumber];
     randomSquare.classList.add("enemy");
@@ -71,6 +72,7 @@ function addListenerHitBox () {
                 } else 
                     {state.values.livesLeft --;
                     state.view.lives.textContent = state.values.livesLeft;
+                    playSound ("pop");
                 }
             }
         })
